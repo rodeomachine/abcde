@@ -1815,9 +1815,9 @@ do_playlist ()
 		GENRE="$(mungegenre "$GENRE")"
 		YEAR=${CDYEAR:-$CDYEAR}
 		if [ "$VARIOUSARTISTS" = "y" ] ; then
-			PLAYLISTFILE="$(eval echo "$VAPLAYLISTFORMAT")"
+			PLAYLISTFILE="$(eval echo \""$VAPLAYLISTFORMAT"\")"
 		else
-			PLAYLISTFILE="$(eval echo "$PLAYLISTFORMAT")"
+			PLAYLISTFILE="$(eval echo \""$PLAYLISTFORMAT"\")"
 		fi
 		FINALPLAYLISTDIR="$(dirname "$OUTPUTDIR/$PLAYLISTFILE")"
 		mkdir -p "$FINALPLAYLISTDIR"
@@ -1857,9 +1857,9 @@ do_playlist ()
 				# TRACKNUM value before evaluation
 				gettracknum
 				if [ "$VARIOUSARTISTS" = "y" ]; then
-					OUTPUTFILE="$(eval echo \""$VAOUTPUTFORMAT\"")"
+					OUTPUTFILE="$(eval echo \""$VAOUTPUTFORMAT"\")"
 				else
-					OUTPUTFILE="$(eval echo \""$OUTPUTFORMAT\"")"
+					OUTPUTFILE="$(eval echo \""$OUTPUTFORMAT"\")"
 				fi
 				if [ "$VARIOUSARTISTS" = "y" ]; then
 					if [ "$VAPLAYLISTDATAPREFIX" ] ; then
@@ -1880,7 +1880,7 @@ do_playlist ()
 		## (some hardware players insist on CRLF endings)
 		if [ "$DOSPLAYLIST" = "y" ]; then
 			awk '{sub("\r$",""); printf "%s\r\n", $0}' "$OUTPUTDIR/$PLAYLISTFILE" > "${ABCDETEMPDIR}/PLAYLISTFILE.tmp"
-			cat "${ABCDETEMPDIR}/PLAYLISTFILE.tmp" | sed 's/\//\\/' > "$OUTPUTDIR/$PLAYLISTFILE"
+			cat "${ABCDETEMPDIR}/PLAYLISTFILE.tmp" > "$OUTPUTDIR/$PLAYLISTFILE"
 		fi
 		echo "playlistcomplete" >> "${ABCDETEMPDIR}/status"
 	done
@@ -3330,15 +3330,15 @@ do_getalbumart()
 				# put cover in the same place as the album
 				if [ "$ONETRACK" = "y" ] ; then
 					if [ "$VARIOUSARTISTS" = "y" ] ; then
-						ALBUMARTDIR="$(eval echo "$VAONETRACKOUTPUTFORMAT")"
+						ALBUMARTDIR="$(eval echo \""$VAONETRACKOUTPUTFORMAT"\")"
 					else
-						ALBUMARTDIR="$(eval echo "$ONETRACKOUTPUTFORMAT")"
+						ALBUMARTDIR="$(eval echo \""$ONETRACKOUTPUTFORMAT"\")"
 					fi
 				else
 					if [ "$VARIOUSARTISTS" = "y" ] ; then
-						ALBUMARTDIR="$(eval echo "$VAOUTPUTFORMAT")"
+						ALBUMARTDIR="$(eval echo \""$VAOUTPUTFORMAT"\")"
 					else
-						ALBUMARTDIR="$(eval echo "$OUTPUTFORMAT")"
+						ALBUMARTDIR="$(eval echo \""$OUTPUTFORMAT"\")"
 					fi
 				fi
 				FINALALBUMARTDIR="$(dirname "$OUTPUTDIR/$ALBUMARTDIR")"
@@ -3372,17 +3372,17 @@ do_embedalbumart()
 		# Find the output directory for multi track encodes:
 		if [ "$ONETRACK" != "y" ] ; then
 			if [ "$VARIOUSARTISTS" = "y" ] ; then
-				FINDPATH="$(eval echo "$VAOUTPUTFORMAT")"
+				FINDPATH="$(eval echo \""$VAOUTPUTFORMAT"\")"
 			else
-				FINDPATH="$(eval echo "$OUTPUTFORMAT")"
+				FINDPATH="$(eval echo \""$OUTPUTFORMAT"\")"
 			fi
 		fi
 		# Find the output directory for single track encodes:
 		if [ "$ONETRACK" = "y" ] ; then
 			if [ "$VARIOUSARTISTS" = "y" ] ; then
-				FINDPATH="$(eval echo "$VAONETRACKOUTPUTFORMAT")"
+				FINDPATH="$(eval echo \""$VAONETRACKOUTPUTFORMAT"\")"
 				else
-				FINDPATH="$(eval echo "$ONETRACKOUTPUTFORMAT")"
+				FINDPATH="$(eval echo \""$ONETRACKOUTPUTFORMAT"\")"
 			fi
 		fi
 
