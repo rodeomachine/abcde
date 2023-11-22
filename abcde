@@ -3399,8 +3399,9 @@ do_embedalbumart()
 				do
 				"$EYED3" --add-image "$ALBUMARTFILE":FRONT_COVER "$i"
 				done
-				mkdir "$FINALDIR"/albumart_backup
-				mv "$ALBUMARTFILE" "$FINALDIR"/albumart_backup
+				#mkdir "$FINALDIR"/albumart_backup
+				#mv "$ALBUMARTFILE" "$FINALDIR"/albumart_backup
+				mv "$ALBUMARTFILE" "$FINALDIR"
 				vecho "Successfully embedded the album art into your $OUTPUT tracks" >&2
 			;;
 			flac)
@@ -3408,8 +3409,9 @@ do_embedalbumart()
 				do 
 				"$METAFLAC" --import-picture-from="$ALBUMARTFILE" "$i"
 				done
-				mkdir "$FINALDIR"/albumart_backup
-				mv "$ALBUMARTFILE" "$FINALDIR"/albumart_backup
+				#mkdir "$FINALDIR"/albumart_backup
+				#mv "$ALBUMARTFILE" "$FINALDIR"/albumart_backup
+				mv "$ALBUMARTFILE" "$FINALDIR"
 				vecho "Successfully embedded the album art into your $OUTPUT tracks" >&2
 			;;
 			m4a)
