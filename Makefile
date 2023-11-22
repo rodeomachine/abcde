@@ -19,6 +19,8 @@ install:
 	$(INSTALL) -m 755 abcde cddb-tool abcde-musicbrainz-tool $(DESTDIR)$(bindir)
 	$(INSTALL) -d -m 755 $(DESTDIR)$(sysconfdir)
 	$(INSTALL) -m 644 abcde.conf $(DESTDIR)$(sysconfdir)
+	$(INSTALL) -m 644 abcde.entire.conf $(DESTDIR)$sysconfdir)
+	$(INSTALL) -m 644 abcde.tracks.conf $(DESTDIR)$(sysconfdir)
 	$(INSTALL) -d -m 755 $(DESTDIR)$(docdir)
 	$(INSTALL) -m 644 changelog COPYING FAQ README $(DESTDIR)$(docdir)
 	$(INSTALL) -d -m 755 $(DESTDIR)$(mandir)/man1
@@ -31,6 +33,8 @@ uninstall:
 	$(DESTDIR)$(bindir)/cddb-tool \
 	$(DESTDIR)$(bindir)/abcde-musicbrainz-tool \
 	$(DESTDIR)$(sysconfdir)/abcde.conf \
+	$(DESTDIR)$(sysconfdir)/abcde.entire.conf \
+	$(DESTDIR)$(sysconfdir)/abcde.tracks.conf \
 	$(DESTDIR)$(docdir)/changelog \
 	$(DESTDIR)$(docdir)/COPYING \
 	$(DESTDIR)$(docdir)/FAQ \
