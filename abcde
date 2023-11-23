@@ -666,7 +666,7 @@ splitvarious ()
 			;;
 		esac
 	elif [ "$VARIOUSARTISTS" = "y" ] && [ "$ONETRACK" = "y" ]; then
-		TRACKARTIST="Various"
+		TRACKARTIST="Various Artists"
 	else
 		TRACKARTIST="$DARTIST"
 	fi
@@ -856,9 +856,9 @@ do_tag ()
 			# id3v2 v0.1.9 claims to have solved the -c bug, so we merge both id3 and id3v2
 			GENREID=$(do_getgenreid "${CDGENRE}")
 			# Set TPE2 in case we have a Various Artists rip.
-			TPE2=""
+			TPE2="$DARTIST"
 			if [ "$VARIOUSARTISTS" = "y" ]; then
-				TPE2="Various"
+				TPE2="Various Artsits"
 			fi
 
 			case "$ID3SYNTAX" in
